@@ -5,6 +5,12 @@ VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.API", "ToDoApp.API\ToDoApp.API.csproj", "{4369EA0F-012E-4CE3-9934-6FFC57DC0B73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Application", "ToDoApp.Application\ToDoApp.Application.csproj", "{50275D43-18FE-445A-903B-4EC51F47940F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Core", "ToDoApp.Core\ToDoApp.Core.csproj", "{F86C9BC4-FEB9-444D-BEE0-EB5E4EB385AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Infrastructure", "ToDoApp.Infrastructure\ToDoApp.Infrastructure.csproj", "{E124C5FD-20AC-459D-8D61-BF9F08E5FA55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{4369EA0F-012E-4CE3-9934-6FFC57DC0B73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4369EA0F-012E-4CE3-9934-6FFC57DC0B73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4369EA0F-012E-4CE3-9934-6FFC57DC0B73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50275D43-18FE-445A-903B-4EC51F47940F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50275D43-18FE-445A-903B-4EC51F47940F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50275D43-18FE-445A-903B-4EC51F47940F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50275D43-18FE-445A-903B-4EC51F47940F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F86C9BC4-FEB9-444D-BEE0-EB5E4EB385AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F86C9BC4-FEB9-444D-BEE0-EB5E4EB385AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F86C9BC4-FEB9-444D-BEE0-EB5E4EB385AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F86C9BC4-FEB9-444D-BEE0-EB5E4EB385AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E124C5FD-20AC-459D-8D61-BF9F08E5FA55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E124C5FD-20AC-459D-8D61-BF9F08E5FA55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E124C5FD-20AC-459D-8D61-BF9F08E5FA55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E124C5FD-20AC-459D-8D61-BF9F08E5FA55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
