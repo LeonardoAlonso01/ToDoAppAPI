@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ToDoApp.Application.Queries.Tasks.GetAllTasks;
+using ToDoApp.Application.Queries.TaskQueries.GetAllTasks;
 using ToDoApp.Application.ViewModels.TasksViewModels;
 using ToDoApp.Core.Repositories;
 

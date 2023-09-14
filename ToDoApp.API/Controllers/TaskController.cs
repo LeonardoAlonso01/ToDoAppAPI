@@ -4,6 +4,8 @@ using ToDoApp.Application.Commands.TasksCommands;
 using ToDoApp.Application.Commands.TasksCommands.CancelTask;
 using ToDoApp.Application.Commands.TasksCommands.CreateTask;
 using ToDoApp.Application.Commands.TasksCommands.DeleteTask;
+using ToDoApp.Application.Commands.TasksCommands.FinishTask;
+using ToDoApp.Application.Commands.TasksCommands.ReopenTask;
 using ToDoApp.Application.Commands.TasksCommands.UpdateTask;
 using ToDoApp.Application.Queries.Users.GetUser;
 

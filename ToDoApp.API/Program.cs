@@ -6,7 +6,10 @@ using ToDoApp.Core.Services.AuthService;
 using ToDoApp.Infrastructure.Services.AuthService;
 using ToDoApp.Core.Services.EmailService;
 using ToDoApp.Infrastructure.Services.EmailService;
-using ToDoApp.Application.Queries.Task.GetAllTasks;
+using ToDoApp.Application.Queries.TaskQueries.GetAllTasks;
+using FluentValidation.AspNetCore;
+using ToDoApp.Application.Commands.Users.CreateUser;
+using ToDoApp.API.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +31,9 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetAllTasksQuery).Assembly));
+
+builder.Services.AddControllers(options => options.Filters.Add(typeof(ValidationFilter)))
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateUserCommand>());
 
 var app = builder.Build();
 
