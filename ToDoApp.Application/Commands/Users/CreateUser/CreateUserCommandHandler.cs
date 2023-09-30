@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,18 +28,26 @@ namespace ToDoApp.Application.Commands.Users.CreateUser
 
         public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            var password = _authService.ComputeSha256Hash(request.Password);
-            var user = new User(request.Name, request.Email, password);
+            var userExists = await _userRepository.GetUserByEmailAsync(request.Email);
 
-            if (user != null)
+            if (userExists == null)
             {
-                await _userRepository.CreateUserAsync(user);
-               // await _emailService.SendEmail("Leooalonso@gmail.com", user.Email, "Conta criada com sucesso", "Criação de conta ToDoApp");
-                return user.Id;
-            } else
-            {
-                return 0;
+                var password = _authService.ComputeSha256Hash(request.Password);
+                var user = new User(request.Name, request.Email, password);
+
+                if (user != null)
+                {
+                    await _userRepository.CreateUserAsync(user);
+                    // await _emailService.SendEmail("Leooalonso@gmail.com", user.Email, "Conta criada com sucesso", "Criação de conta ToDoApp");
+                    return user.Id;
+                }
+                else
+                {
+                    return 0;
+                }
+
             }
+            return 0;
         }
     }
 }

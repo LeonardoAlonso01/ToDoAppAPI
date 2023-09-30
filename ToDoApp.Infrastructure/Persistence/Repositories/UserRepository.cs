@@ -30,6 +30,16 @@ namespace ToDoApp.Infrastructure.Persistence.Repositories
             await _appContext.SaveChangesAsync();
         }
 
+        public async Task<User> GetUserByEmailAndPasswordAsync(string email, string password)
+        {
+            return await _appContext.Users.SingleOrDefaultAsync(u => u.Email == email && u.Password == password);
+        }
+
+        public async Task<User> GetUserByEmailAsync(string email)
+        {
+            return await _appContext.Users.SingleOrDefaultAsync(u => u.Email == email);
+        }
+
         public async Task<User> GetUserByIdAsync(int id)
         {
             return await _appContext.Users.SingleOrDefaultAsync(u => u.Id == id);

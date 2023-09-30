@@ -13,5 +13,7 @@ namespace ToDoApp.Core.Repositories
         Task UpdateUserAsync();
         Task DeleteUserAsync(User user);
         Task<User> GetUserByIdAsync(int id);
+        Task<User> GetUserByEmailAndPasswordAsync(string email, string password);
+        Task<User> GetUserByEmailAsync(string email);
     }
 }

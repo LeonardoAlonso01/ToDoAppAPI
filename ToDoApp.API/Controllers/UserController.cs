@@ -1,7 +1,9 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ToDoApp.Application.Commands.Users.CreateUser;
 using ToDoApp.Application.Commands.Users.DeleteUser;
+using ToDoApp.Application.Commands.Users.Login;
 using ToDoApp.Application.Commands.Users.UpdateUser;
 using ToDoApp.Application.Queries.Users.GetUser;
 using ToDoApp.Application.ViewModels.Users;
@@ -12,6 +14,7 @@ namespace ToDoApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -59,6 +62,20 @@ namespace ToDoApp.API.Controllers
         {
             await _mediator.Send(command);
             return Ok();
+        }
+
+        [HttpPut("login")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login([FromBody] LoginUserCommand command)
+        {
+            var loginUserViewModel = await _mediator.Send(command);
+
+            if (loginUserViewModel == null)
+            {
+                return BadRequest();
+            }
+
+            return Ok(loginUserViewModel);
         }
     }
 }

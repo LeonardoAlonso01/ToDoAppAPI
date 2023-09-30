@@ -11,7 +11,7 @@ using ToDoApp.Core.Repositories;
 
 namespace ToDoApp.Application.Queries.TaskQueries.GetAllTasks
 {
-    public class GetAllTasksQueryHandler : IRequestHandler<GetAllTasksQuery, TaskViewModel>
+    public class GetAllTasksQueryHandler : IRequestHandler<GetAllTasksQuery, List<TaskViewModel>>
     {
         private readonly ITaskRepository _taskRepository;
 
@@ -20,13 +20,16 @@ namespace ToDoApp.Application.Queries.TaskQueries.GetAllTasks
             _taskRepository = taskRepository;
         }
 
-        public async Task<TaskViewModel> Handle(GetAllTasksQuery request, CancellationToken cancellationToken)
+        public async Task<List<TaskViewModel>> Handle(GetAllTasksQuery request, CancellationToken cancellationToken)
         {
             var tasks = await _taskRepository.GetTasksAsync();
 
             if (tasks.Count > 0)
             {
-                var tasksViewModel = tasks.Select(t => new TaskViewModel(t.Title, t.Status)).ToList();
+                var userTasks = tasks.Where(t => t.IdUser == request.IdUser);
+
+                var tasksViewModel = userTasks.Select(t => new TaskViewModel(t.Title, t.Status)).ToList();
+                return tasksViewModel;
             }
 
             return null;

@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.API", "ToDoApp.API\ToDoApp.API.csproj", "{4369EA0F-012E-4CE3-9934-6FFC57DC0B73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.API", "ToDoApp.API\ToDoApp.API.csproj", "{4369EA0F-012E-4CE3-9934-6FFC57DC0B73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Application", "ToDoApp.Application\ToDoApp.Application.csproj", "{50275D43-18FE-445A-903B-4EC51F47940F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Application", "ToDoApp.Application\ToDoApp.Application.csproj", "{50275D43-18FE-445A-903B-4EC51F47940F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Core", "ToDoApp.Core\ToDoApp.Core.csproj", "{F86C9BC4-FEB9-444D-BEE0-EB5E4EB385AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Core", "ToDoApp.Core\ToDoApp.Core.csproj", "{F86C9BC4-FEB9-444D-BEE0-EB5E4EB385AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Infrastructure", "ToDoApp.Infrastructure\ToDoApp.Infrastructure.csproj", "{E124C5FD-20AC-459D-8D61-BF9F08E5FA55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Infrastructure", "ToDoApp.Infrastructure\ToDoApp.Infrastructure.csproj", "{E124C5FD-20AC-459D-8D61-BF9F08E5FA55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.UnitTests", "ToDoApp.UnitTests\ToDoApp.UnitTests.csproj", "{245E8530-F3A2-46C9-8F8E-A225A2DBFE33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E124C5FD-20AC-459D-8D61-BF9F08E5FA55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E124C5FD-20AC-459D-8D61-BF9F08E5FA55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E124C5FD-20AC-459D-8D61-BF9F08E5FA55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{245E8530-F3A2-46C9-8F8E-A225A2DBFE33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{245E8530-F3A2-46C9-8F8E-A225A2DBFE33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{245E8530-F3A2-46C9-8F8E-A225A2DBFE33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{245E8530-F3A2-46C9-8F8E-A225A2DBFE33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
