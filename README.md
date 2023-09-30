@@ -1,7 +1,5 @@
-ToDoApp API
 Esta é uma API em .NET para um aplicativo de lista de tarefas (ToDoApp) que demonstra o uso de várias tecnologias e padrões, incluindo Arquitetura Limpa, Entity Framework com Migrations, Padrão CQRS, Padrão Repository, Validações de Dados de Entrada com Fluent Validation, Autenticação com JWT e Testes Unitários com a biblioteca xUnit.
 
-Tecnologias e Padrões Utilizados
 .NET Core: Esta API é desenvolvida em .NET Core.
 
 Entity Framework: Utilizado o Entity Framework para interagir com o banco de dados. As migrações são usadas para gerenciar o esquema do banco de dados.
