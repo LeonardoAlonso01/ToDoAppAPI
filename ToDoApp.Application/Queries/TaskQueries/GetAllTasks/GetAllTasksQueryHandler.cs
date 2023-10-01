@@ -9,23 +9,24 @@ using ToDoApp.Application.Queries.TaskQueries.GetAllTasks;
 using ToDoApp.Application.ViewModels.TasksViewModels;
 using ToDoApp.Core.Models;
 using ToDoApp.Core.Repositories;
+using ToDoApp.Infrastructure.Persistence;
 
 namespace ToDoApp.Application.Queries.TaskQueries.GetAllTasks
 {
     public class GetAllTasksQueryHandler : IRequestHandler<GetAllTasksQuery, PaginationResult<TaskViewModel>>
     {
-        private readonly ITaskRepository _taskRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public GetAllTasksQueryHandler(ITaskRepository taskRepository)
+        public GetAllTasksQueryHandler(IUnitOfWork unitOfWork)
         {
-            _taskRepository = taskRepository;
+            _unitOfWork = unitOfWork;
         }
 
 
         // Caso não fosse paginado o retorno do método seria um list e não um pagination result
         public async Task<PaginationResult<TaskViewModel>> Handle(GetAllTasksQuery request, CancellationToken cancellationToken)
         {
-            var tasks = await _taskRepository.GetTasksAsync(request.Query, request.Page);
+            var tasks = await _unitOfWork.TaskRepository.GetTasksAsync(request.Query, request.Page);
 
             if (tasks.Data.Count > 0)
             {

@@ -8,6 +8,7 @@ using ToDoApp.Application.Queries.TaskQueries.GetAllTasks;
 using ToDoApp.Core.Entities;
 using ToDoApp.Core.Models;
 using ToDoApp.Core.Repositories;
+using ToDoApp.Infrastructure.Persistence;
 using Xunit;
 
 namespace ToDoApp.UnitTests.Application.Queries
@@ -57,10 +58,13 @@ namespace ToDoApp.UnitTests.Application.Queries
 
             };
 
+            var unitOfWork = new Mock<IUnitOfWork>();
             var taskRepositoryMock = new Mock<ITaskRepository>();
+
+            unitOfWork.SetupGet(uow => uow.TaskRepository).Returns(taskRepositoryMock.Object);
             taskRepositoryMock.Setup(tr => tr.GetTasksAsync(It.IsAny<string>(), It.IsAny<int>()).Result).Returns(tasks);
             var query = new GetAllTasksQuery("", 1, It.IsAny<int>());
-            var queryHandler = new GetAllTasksQueryHandler(taskRepositoryMock.Object);
+            var queryHandler = new GetAllTasksQueryHandler(unitOfWork.Object);
 
             // Act
             var tasksViewModel = await queryHandler.Handle(query, new CancellationToken());

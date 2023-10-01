@@ -8,6 +8,7 @@ using ToDoApp.Application.Commands.TasksCommands.CreateTask;
 using ToDoApp.Application.Queries.TaskQueries.GetAllTasks;
 using ToDoApp.Core.Entities;
 using ToDoApp.Core.Repositories;
+using ToDoApp.Infrastructure.Persistence;
 using Xunit;
 
 namespace ToDoApp.UnitTests.Application.Commands
@@ -18,7 +19,10 @@ namespace ToDoApp.UnitTests.Application.Commands
         public async Task InputDataIsOk_Executed_ReturnTaskId()
         {
             //Arrange
+            var unitOfWork = new Mock<IUnitOfWork>();
             var taskRepositoryMock = new Mock<ITaskRepository>();
+
+            unitOfWork.SetupGet(uow => uow.TaskRepository).Returns(taskRepositoryMock.Object);
 
             var createTaskCommand = new CreateTaskCommand
             {
@@ -27,7 +31,7 @@ namespace ToDoApp.UnitTests.Application.Commands
                 IdUser = 1
             };
 
-            var createTaskCommandHandler = new CreateTaskCommandHandler(taskRepositoryMock.Object);
+            var createTaskCommandHandler = new CreateTaskCommandHandler(unitOfWork.Object);
 
             //Act
             var id = await createTaskCommandHandler.Handle(createTaskCommand, new CancellationToken());

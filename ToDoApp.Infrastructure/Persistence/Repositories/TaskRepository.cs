@@ -23,7 +23,6 @@ namespace ToDoApp.Infrastructure.Persistence.Repositories
         public async Task CreateTaskAsync(Tasks task)
         {
             await _appContext.Tasks.AddAsync(task);
-            await _appContext.SaveChangesAsync();
         }
 
         public async Task DeleteTaskAsync(Tasks task)

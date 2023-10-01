@@ -73,6 +73,7 @@ builder.Services.AddDbContext<ToDoAppContext>(options => options.UseSqlServer(co
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();  
 
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 builder.Services.AddScoped<IAuthService, AuthService>();
