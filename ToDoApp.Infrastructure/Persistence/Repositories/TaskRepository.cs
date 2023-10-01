@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using ToDoApp.Core.Entities;
 using ToDoApp.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
+using ToDoApp.Core.Models;
 
 namespace ToDoApp.Infrastructure.Persistence.Repositories
 {
     public class TaskRepository : ITaskRepository
     {
+        private const int _pageSize = 2;
         private readonly ToDoAppContext _appContext;
 
         public TaskRepository(ToDoAppContext appContext)
@@ -35,9 +37,17 @@ namespace ToDoApp.Infrastructure.Persistence.Repositories
             return await _appContext.Tasks.SingleOrDefaultAsync(t => t.Id == id);
         }
 
-        public async Task<List<Tasks>> GetTasksAsync()
+        public async Task<PaginationResult<Tasks>> GetTasksAsync(string query, int page = 1)
         {
-            return await _appContext.Tasks.ToListAsync();
+            IQueryable <Tasks> tasks = _appContext.Tasks;
+
+            if(!string.IsNullOrWhiteSpace(query))
+            {
+                tasks = tasks.Where(t => 
+                                t.Title.Contains(query) || 
+                                    t.Description.Contains(query));
+            }
+            return await tasks.GetPaged<Tasks>(page, _pageSize);
         }
 
         public async Task UpdateTaskAsync()

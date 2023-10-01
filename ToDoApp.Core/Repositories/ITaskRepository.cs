@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoApp.Core.Entities;
+using ToDoApp.Core.Models;
 
 namespace ToDoApp.Core.Repositories
 {
@@ -13,6 +14,6 @@ namespace ToDoApp.Core.Repositories
         Task UpdateTaskAsync();
         Task DeleteTaskAsync(Tasks task);
         Task<Tasks> GetTaskByIdAsync(int id);
-        Task<List<Tasks>> GetTasksAsync();
+        Task<PaginationResult<Tasks>> GetTasksAsync(string query, int page = 1);
     }
 }

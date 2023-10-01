@@ -30,9 +30,9 @@ namespace ToDoApp.API.Controllers
 
         // GET: api/<TaskController>
          [HttpGet]
-         public async Task<IActionResult> Get(string query, int idUser)
+         public async Task<IActionResult> Get(string query, int idUser, int page)
          {
-            var tasksQuery = new GetAllTasksQuery(query, idUser);
+            var tasksQuery = new GetAllTasksQuery(query, idUser, page);
             var tasks = await _mediator.Send(tasksQuery);
             return Ok(tasks);
 
